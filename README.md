@@ -1,15 +1,18 @@
-JavaScript 是最流行的编程语言之一，每年都会添加新的特性。本文介绍了添加在 ECMAScript 2020（ES2020）中的新特性。
-在引入 ECMAScript 2015（又称 ES6）之前，JavaScript 发展的非常缓慢。但自 2015 年起，每年都有新特性添加进来。需要注意的是，不是所有特性都被现代浏览器支持，但是由于 JavaScript 编译器 Babel 的存在，我们已经可以使用新特性了。本文将介绍 ECMAScript 2020（ES2020）的一些最新特性。
+在引入 ECMAScript 2015（又称 ES6）之前，JavaScript 发展的非常缓慢。自 2015 年起，JS每年都有新特性添加进来。下面将介绍 ECMAScript 2020（ES2020）的一些最新特性。
 
 ##Optional Chaining 可选链式调用
 可选链 可让我们在查询具有多层级的对象时，不再需要进行冗余的各种前置校验。
 
 日常开发中，我们经常会遇到这种查询
-`const name = user && user.info && user.info.name;`
+```
+const name = user && user.info && user.info.name;
+```
 
 又或是这种
-`const age = user && user.info && user.info.getAge && user.info.getAge();`
-这是一种丑陋但又不得不做的前置校验，否则很容易命中 Uncaught TypeError: Cannot read property... 这种错误，这极有可能让你整个应用挂掉。
+```
+const age = user && user.info && user.info.getAge && user.info.getAge();
+```
+这是一种繁琐但又不得不做的前置校验，否则很容易命中 Uncaught TypeError: Cannot read property... 这种错误，这极有可能让你整个应用挂掉。
 
 用了 Optional Chaining ，上面代码会变成
 ```
@@ -184,7 +187,9 @@ num = num +  1 ;  //  9007199254740992
 
 ####在整数字面量后面加n。
 
-`let  bigIntNum =  9007199254740993n ;`
+```
+let  bigIntNum =  9007199254740993n ;
+```
 ####使用 BigInt 函数。
 ```
 let bigIntNum =  BigInt ( 9007199254740 );
@@ -195,17 +200,3 @@ let  anOtherBigIntNum =  BigInt ( '9007199254740993' );
 let bigNumRet =  9007199254740993n +  9007199254740993n ;  // 18014398509481986n
 bigNumRet.toString();  //  '18014398509481986'
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
