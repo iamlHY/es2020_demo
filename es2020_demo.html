@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<script>
+
+// Optional Chaining 可选链式调用
+// 访问对象的属性
+const flower = {
+    colors: {
+        red: true
+    }
+}
+console.log(flower.colors.red) // 正常运行
+// console.log(flower.species.lily) // 抛出错误：TypeError: Cannot read property 'lily' of undefined
+console.log(flower.species?.lily) // 输出 undefined
+
+// 访问数组
+let flowers =  ['lily', 'daisy', 'rose']
+console.log(flowers[1]) // 输出：daisy
+flowers = null
+// console.log(flowers[1]) // 抛出错误：TypeError: Cannot read property '1' of null
+console.log(flowers?.[1]) // 输出：undefined
+
+// 调用函数
+let plantFlowers = () => {
+  return 'abc'
+}
+console.log(plantFlowers()) // abc
+plantFlowers = null
+// console.log(plantFlowers()) // 抛出错误：TypeError: plantFlowers is not a function
+console.log(plantFlowers?.()) // 输出：undefined
+
+// Private Fields 私有字段
+class Flower {
+  #leaf_color = "green";
+  constructor(name) {
+    this.name = name;
+  }
+  get_color() {
+    return this.#leaf_color;
+  }
+}
+const rose = new Flower("rose");
+console.log(rose.get_color()); // 输出：green
+// console.log(rose.#leaf_color) // 报错：SyntaxError: Private field '#leaf_color' must be declared in an enclosing class
+
+// promise.allSettled
+const p1 = new Promise((res, rej) => setTimeout(() => res([1,2]), 1000));
+const p2 = new Promise((res, rej) => setTimeout(() => rej('reject'), 1000));
+
+// 如果队列中任意一个promise返回reject, 则终止, throw error
+Promise.all([p1, p2])
+  .then(data => { console.log(data) })
+  .catch (error => {
+  // 本例中会执行到这个回调
+    console.log(error)
+  });
+
+// 等待所有的promise完成（无论成功失败）， 返回一个promise结果的list
+Promise.allSettled([p1, p2]).then(data => console.log(data));
+
+const str = '<text>JS</text><text>正则</text>';
+const allMatchs = str.matchAll(/<\w+>(.*?)<\/\w+>/g);
+
+for(const match of allMatchs) {
+  console.log(match);
+}
+
+</script>
