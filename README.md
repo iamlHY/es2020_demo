@@ -40,7 +40,7 @@ let myNumber = number ?? 7
 ```
 操作符右边的值仅在左边的值等于 null 或 undefined 时有效，因此，例子中的变量 myNumber 现在的值等于 0 了。
 
-##Private Fields 私有字段
+## Private Fields 私有字段
 许多具有 classes 的编程语言允许定义类作为公共的，受保护的或私有的属性。Public 属性可以从类的外部或者子类访问，protected 属性只能被子类访问，private 属性只能被类内部访问。JavaScript 从 ES6 开始支持类语法，但直到现在才引入了私有字段。要定义私有属性，必须在其前面加上散列符号：#。
 ```
 class Flower {
@@ -61,8 +61,8 @@ console.log(rose.#leaf_color) // 报错：SyntaxError: Private field '#leaf_colo
 ```
 如果我们从外部访问类的私有属性，就会报错。
 
-##Promise.allSettled 方法
-####Promise.all 缺陷
+## Promise.allSettled 方法
+#### Promise.all 缺陷
 
 都知道 Promise.all 具有并发执行异步任务的能力。但它的最大问题就是如果其中某个任务出现异常(reject)，所有任务都会挂掉，Promise直接进入 reject 状态。
 
@@ -89,7 +89,7 @@ Promise.allSettled([p1, p2])
 });
 
 ```
-##Dynamic Import 动态引入
+## Dynamic Import 动态引入
 动态 import 允许您将 JS 文件作为原生应用用程序中的模块动态导入。 在 ES2020之前，不管是否使用模块，都应该导入模块。
 例如，假设我们需要添加一个下载功能。在动态导入之前，无论用户是否使用它，download.js仍然需要被导入。在动态导入之后，只有在需要模块时才延迟加载模块，从而减少开销和页面加载时间。
 ```
@@ -117,7 +117,7 @@ downloadButton.addEventListener('click', () => {
     })
 })
 ```
-##MatchAll 匹配所有项
+## MatchAll 匹配所有项
 如果你想要查找字符串中所有正则表达式的匹配项和它们的位置，MatchAll 非常有用。
 ```
 const str = '<text>JS</text><text>正则</text>';
@@ -153,7 +153,7 @@ for(const match of allMatchs) {
 ]
 */
 ```
-##globalThis 全局对象
+## globalThis 全局对象
 Javascript 在不同的环境获取全局对象有不通的方式，node 中通过 global, web中通过 window, self 等，有些甚至通过 this 获取，但通过 this 是及其危险的，this 在 js 中异常复杂，它严重依赖当前的执行上下文，这些无疑增加了获取全局对象的复杂性。
 ```
 // 过去获取全局对象，可通过一个全局函数
@@ -170,7 +170,7 @@ beforeGlobalThis.name = 'xiaoming';
 // ES2020，直接使用globalThis，不用去担心环境的问题
 globalThis.name = 'xiaoming';
 ```
-##BigInt
+## BigInt
 Js 中 Number类型只能安全的表示-(2^53-1)至 2^53-1 范的值，即Number.MINSAFEINTEGER 至Number.MAXSAFEINTEGER，超出这个范围的整数计算或者表示会丢失精度。
 ```
 let num = Number .MAX_SAFE_INTEGER;   // 9007199254740991
@@ -185,12 +185,12 @@ num = num +  1 ;  //  9007199254740992
 ```
 为解决此问题，ES2020提供一种新的数据类型：BigInt。使用 BigInt 有两种方式：
 
-####在整数字面量后面加n。
+#### 在整数字面量后面加n。
 
 ```
 let  bigIntNum =  9007199254740993n ;
 ```
-####使用 BigInt 函数。
+#### 使用 BigInt 函数。
 ```
 let bigIntNum =  BigInt ( 9007199254740 );
 let  anOtherBigIntNum =  BigInt ( '9007199254740993' );
